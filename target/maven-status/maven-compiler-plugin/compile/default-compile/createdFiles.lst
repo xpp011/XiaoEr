@@ -1,0 +1,12 @@
+cn\xpp\dao\LoginMapper.class
+cn\xpp\pojo\Commodity.class
+cn\xpp\controller\LoginController.class
+cn\xpp\Interceptor\LoginInterceptor.class
+cn\xpp\controller\CommodityController.class
+cn\xpp\service\CommodityService.class
+cn\xpp\service\CommodityServiceImpl.class
+cn\xpp\dao\CommodityMapper.class
+cn\xpp\service\LoginSercice.class
+cn\xpp\pojo\Order.class
+cn\xpp\service\LoginServiceImpl.class
+cn\xpp\pojo\User.class

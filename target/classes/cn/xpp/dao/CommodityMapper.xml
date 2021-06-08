@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xpp.dao.CommodityMapper">
+    <select id="getCommodityByName" resultType="commodity" parameterType="string">
+        SELECT * FROM `commodity` WHERE `name` LIKE #{name}
+    </select>
+
+    <resultMap id="Order" type="order">
+        <result property="commodityId" column="commodity_id"/>
+        <result property="commodityName" column="name"/>
+        <result property="commoditySize" column="commodity_size"/>
+    </resultMap>
+    <select id="getOrderAll" parameterType="_int" resultMap="Order">
+        SELECT o.id ,commodity_id,commodity_size,`name`,`src`,`price` FROM `order`
+        AS `o`,`commodity` AS `c` WHERE user_id=#{userid} AND commodity_id=c.id
+    </select>
+
+
+    <update id="updateSize" parameterType="_int">
+        UPDATE `order` SET  `commodity_size`=#{size} WHERE id=#{id}
+    </update>
+
+    <delete id="del" parameterType="_int" >
+        DELETE FROM `order` WHERE id=#{id}
+    </delete>
+
+    <insert id="add" parameterType="_int" >
+        INSERT INTO `order`(`commodity_id`,`commodity_size`,`user_id`) VALUES(#{commodityId},1,#{UserId})
+    </insert>
+
+
+    <select id="CommodityList" parameterType="string" resultType="commodity">
+        SELECT * FROM `commodity`
+        <where >
+            <if test="name != null">
+                `name` LIKE #{name}
+            </if>
+        </where>
+    </select>
+</mapper>

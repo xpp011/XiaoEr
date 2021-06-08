@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xpp.dao.LoginMapper">
+    <select id="getUser" resultType="user" parameterType="string">
+        SELECT * FROM `user` WHERE `username`=#{username} AND `password`=#{password}
+    </select>
+
+
+    <insert id="register" parameterType="string" >
+        INSERT INTO `user`(`username`,`password`) VALUE(#{username},#{password})
+    </insert>
+
+
+    <select id="getUserByName" parameterType="string" resultType="user">
+        SELECT * FROM `user` WHERE `username`=#{username}
+    </select>
+</mapper>

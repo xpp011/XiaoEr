@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:conetxt="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--扫描报下的所有@Service注解自动装配到配置文件中-->
+    <conetxt:component-scan base-package="cn.xpp.service"/>
+
+    <bean class="cn.xpp.service.CommodityServiceImpl" id="commodityService">
+        <property name="commodityMapper" ref="commodityMapper"/>
+    </bean>
+
+    <bean class="cn.xpp.service.LoginServiceImpl" id="loginService">
+        <property name="loginMapper" ref="loginMapper"/>
+    </bean>
+
+    <!--配置声明式事务-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--配置数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--aop-->
+</beans>
